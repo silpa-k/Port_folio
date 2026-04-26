@@ -1,6 +1,4 @@
-// Mock data for Silpa Kumaru's UI/UX Portfolio
-// All data here is mocked — easy to swap with backend later.
-
+// Mock data for Silpa Kumari's UI/UX Portfolio
 import {
   Layers,
   Palette,
@@ -11,77 +9,86 @@ import {
   Dribbble,
   Github,
   ArrowUpRight,
+  Brain,
+  Search,
+  Lightbulb,
+  BookOpen,
+  Sparkles,
+  Wrench,
 } from 'lucide-react';
 
 export const profile = {
-  name: 'Silpa Kumaru',
+  name: 'Silpa Kumari',
   handle: '@silpa.designs',
-  role: 'UI/UX & Visual Designer',
+  role: 'Multidisciplinary Designer',
   location: 'Bengaluru, India',
-  email: 'hello@silpakumaru.design',
-  linkedin: 'https://linkedin.com/in/silpakumaru',
-  dribbble: 'https://dribbble.com/silpakumaru',
-  github: 'https://github.com/silpakumaru',
+  email: 'hello@silpakumari.design',
+  linkedin: 'https://linkedin.com/in/silpakumari',
+  dribbble: 'https://dribbble.com/silpakumari',
+  github: 'https://github.com/silpakumari',
   avatar:
-    'https://images.unsplash.com/photo-1654512697681-8434b50096dd?w=900&q=80&auto=format&fit=crop',
+    'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/7p3x22bz_WhatsApp%20Image%202026-04-26%20at%2012.13.14.jpeg',
   about:
-    'https://images.pexels.com/photos/3769004/pexels-photo-3769004.jpeg?w=1200&auto=compress',
-  yearsExp: 4,
-  shipped: 28,
-  clients: 14,
+    'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/7p3x22bz_WhatsApp%20Image%202026-04-26%20at%2012.13.14.jpeg',
+  yearsExp: 3,
+  shipped: 20,
+  clients: 12,
 };
 
 export const heroStats = [
-  { value: '4+', label: 'Years designing' },
-  { value: '28', label: 'Products shipped' },
-  { value: '14', label: 'Happy clients' },
+  { value: '20+', label: 'Projects shipped' },
+  { value: '4', label: 'Disciplines' },
+  { value: '∞', label: 'Curiosity' },
 ];
 
 export const projects = [
   {
     id: 'p1',
-    title: 'Lumen — Neo Banking',
-    tag: 'FinTech · Mobile App',
+    title: 'Nykaa — Website Redesign',
+    tag: 'eCommerce · Web + Mobile',
     year: '2025',
     description:
-      'Reimagined a mobile banking experience for Gen Z — smart spend tracking, social splits and a card OS that feels like a game.',
+      'Improving usability, personalization, and product discovery for users — a fresh take on India’s leading beauty platform.',
     cover:
-      'https://images.pexels.com/photos/6406691/pexels-photo-6406691.jpeg?w=1200&auto=compress',
-    accent: '#6C5CE7',
-    metrics: [
-      { k: 'Activation', v: '+38%' },
-      { k: 'NPS', v: '72' },
-    ],
+      'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/85lhtci7_Yy9QCswUt9vl513Q2nSS8K87N5A.avif',
+    accent: '#FF3F8E',
+    chips: ['Visual Design', 'UI Polish', 'Mobile'],
   },
   {
     id: 'p2',
-    title: 'Pulse — SaaS Analytics',
-    tag: 'B2B · Web Dashboard',
-    year: '2024',
+    title: 'SoapyGo — Smart Laundry App',
+    tag: 'Mobile · Service App',
+    year: '2025',
     description:
-      'A calm analytics workspace for hiring teams. Designed a flexible card system, dark mode, and an insights engine that surfaces signal over noise.',
+      'Redefining convenience and transparency in daily laundry services. From scheduling to live tracking, designed end-to-end.',
     cover:
-      'https://images.unsplash.com/photo-1763718528755-4bca23f82ac3?w=1400&q=80&auto=format&fit=crop',
+      'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/4kqfz60o_Capture.PNG',
     accent: '#00F5D4',
-    metrics: [
-      { k: 'Time-to-insight', v: '-46%' },
-      { k: 'DAU', v: '+22%' },
-    ],
+    chips: ['UI/UX', 'Product Strategy', 'E-commerce'],
   },
   {
     id: 'p3',
-    title: 'Maison — Commerce Redesign',
-    tag: 'eCommerce · Web + Mobile',
+    title: 'TRAKLE — HR Management',
+    tag: 'B2B · Web Dashboard',
     year: '2024',
     description:
-      'Rebuilt the checkout flow for a slow-fashion brand. One page, one mood — conversion up, returns down, vibe immaculate.',
+      'Designing a unified HR system that reduces manual effort and improves team visibility — finance, goals, and people in one place.',
     cover:
-      'https://images.unsplash.com/photo-1757301714935-c8127a21abc6?w=1400&q=80&auto=format&fit=crop',
+      'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/39g5vu7j_Captur.PNG',
     accent: '#A78BFA',
-    metrics: [
-      { k: 'Conversion', v: '+31%' },
-      { k: 'Cart drop-off', v: '-19%' },
-    ],
+    chips: ['Product Design', 'Tech Design', 'Data Viz'],
+  },
+  {
+    id: 'p4',
+    title: 'Brand & Visual Design',
+    tag: 'Branding · Campaigns · Social',
+    year: '2024',
+    description:
+      'Branding, visual identity, campaigns, and social-media posts crafted to match each brand’s soul — from neon perfume drops to typographic posters.',
+    cover:
+      'https://customer-assets.emergentagent.com/job_portfolio-lab-40/artifacts/9a99idiz_Cap.PNG',
+    accent: '#6C5CE7',
+    chips: ['Branding', 'Visual Identity', 'Social Media'],
   },
 ];
 
@@ -112,15 +119,74 @@ export const services = [
   },
 ];
 
+export const drivers = [
+  {
+    id: 'd1',
+    icon: Brain,
+    title: 'Understanding People',
+    desc: 'I love decoding what users think, expect, and feel — often before they say it.',
+  },
+  {
+    id: 'd2',
+    icon: Search,
+    title: 'Structured Thinking',
+    desc: 'My engineering background made me analytical, systematic, and obsessively detail-oriented.',
+  },
+  {
+    id: 'd3',
+    icon: Lightbulb,
+    title: 'Creative Problem Solving',
+    desc: 'I turn raw insights into visuals, flows, and experiences that actually work.',
+  },
+  {
+    id: 'd4',
+    icon: BookOpen,
+    title: 'Continuous Learning',
+    desc: 'Design evolves every single day — and I evolve with it.',
+  },
+];
+
+export const skills = [
+  'UI/UX Design',
+  'Product Design',
+  'Wireframing',
+  'Prototyping',
+  'Visual Design',
+  'Branding',
+  'Social Media Design',
+  'Interaction Design',
+  'User Flows',
+  'Research',
+  'Storytelling',
+  'Typography',
+];
+
 export const tools = [
   'Figma',
   'Framer',
-  'Webflow',
-  'Notion',
-  'After Effects',
-  'Spline',
-  'Lottie',
-  'Cursor',
+  'FigJam',
+  'Adobe Illustrator',
+  'Photoshop',
+  'Canva',
+  'ChatGPT',
+  'Midjourney',
+  'DALL·E',
+  'Runway',
+  'Adobe Firefly',
+  'HTML',
+  'CSS',
+];
+
+// Used in hero marquee
+export const marqueeTools = [
+  'Figma',
+  'Framer',
+  'FigJam',
+  'Illustrator',
+  'Photoshop',
+  'Midjourney',
+  'Runway',
+  'HTML/CSS',
 ];
 
 export const testimonials = [
@@ -141,17 +207,20 @@ export const testimonials = [
 ];
 
 export const socials = [
-  { id: 'em', label: 'Email', icon: Mail, href: 'mailto:hello@silpakumaru.design' },
-  { id: 'li', label: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/silpakumaru' },
-  { id: 'dr', label: 'Dribbble', icon: Dribbble, href: 'https://dribbble.com/silpakumaru' },
-  { id: 'gh', label: 'GitHub', icon: Github, href: 'https://github.com/silpakumaru' },
+  { id: 'em', label: 'Email', icon: Mail, href: 'mailto:hello@silpakumari.design' },
+  { id: 'li', label: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/in/silpakumari' },
+  { id: 'dr', label: 'Dribbble', icon: Dribbble, href: 'https://dribbble.com/silpakumari' },
+  { id: 'gh', label: 'GitHub', icon: Github, href: 'https://github.com/silpakumari' },
 ];
 
 export const navLinks = [
   { id: 'work', label: 'Work', href: '#work' },
   { id: 'services', label: 'Services', href: '#services' },
   { id: 'about', label: 'About', href: '#about' },
+  { id: 'skills', label: 'Skills', href: '#skills' },
   { id: 'contact', label: 'Contact', href: '#contact' },
 ];
 
 export const ArrowIcon = ArrowUpRight;
+export const SkillIcon = Sparkles;
+export const ToolIcon = Wrench;

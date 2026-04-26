@@ -4,6 +4,7 @@ import Hero from './sections/Hero';
 import Projects from './sections/Projects';
 import Services from './sections/Services';
 import About from './sections/About';
+import Skills from './sections/Skills';
 import Contact from './sections/Contact';
 import Footer from './sections/Footer';
 
@@ -24,6 +25,7 @@ export default function Portfolio() {
         <Projects />
         <Services />
         <About />
+        <Skills />
         <Contact />
       </main>
       <Footer />

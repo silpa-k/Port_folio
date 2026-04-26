@@ -1,6 +1,6 @@
 import { ArrowRight, Mail, Sparkles, Star } from 'lucide-react';
 import useReveal from '../../hooks/useReveal';
-import { profile, heroStats, tools } from '../../mock';
+import { profile, heroStats, marqueeTools as tools } from '../../mock';
 
 export default function Hero() {
   const [r1, v1] = useReveal();
@@ -30,20 +30,22 @@ export default function Hero() {
 
             <h1
               ref={r2}
-              className={`reveal reveal-delay-1 ${v2 ? 'in-view' : ''} font-display font-bold text-[44px] leading-[1.05] sm:text-[56px] md:text-[72px] lg:text-[80px] tracking-tight`}
+              className={`reveal reveal-delay-1 ${v2 ? 'in-view' : ''} font-display font-bold text-[44px] leading-[1.05] sm:text-[56px] md:text-[68px] lg:text-[76px] tracking-tight`}
             >
-              Designing <span className="text-gradient-aqua">experiences</span>
+              Hey there, I&apos;m <span className="text-gradient-aqua">Silpa</span>.
               <br className="hidden sm:block" />
-              that feel as good as <span className="italic font-medium text-white/85">they look.</span>
+              I design things that <span className="italic font-medium text-white/85">make people pause,</span>
+              <br className="hidden sm:block" />
+              <span className="italic font-medium text-white/85">notice,</span> and <span className="text-gradient-aqua">engage</span>.
             </h1>
 
             <p
               ref={r3}
-              className={`reveal reveal-delay-2 ${v3 ? 'in-view' : ''} mt-6 text-[16px] md:text-[18px] text-white/65 max-w-[560px] leading-relaxed`}
+              className={`reveal reveal-delay-2 ${v3 ? 'in-view' : ''} mt-6 text-[16px] md:text-[18px] text-white/65 max-w-[600px] leading-relaxed`}
             >
-              I&apos;m {profile.name.split(' ')[0]} — a UI/UX & visual designer obsessed with clean,
-              impactful, user-first products. I turn fuzzy briefs into interfaces people actually
-              want to use.
+              A multidisciplinary designer crafting digital experiences, visual identities, and
+              brand stories with intention, clarity, and character &mdash; turning ideas into
+              meaningful, beautiful outcomes.
             </p>
 
             <div className={`reveal reveal-delay-3 ${v3 ? 'in-view' : ''} mt-9 flex flex-wrap items-center gap-4`}>
@@ -81,6 +83,7 @@ export default function Hero() {
                     alt={profile.name}
                     className="w-full h-full object-cover"
                     loading="eager"
+                    style={{ filter: 'brightness(1.25) contrast(1.05) saturate(1.05)' }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F1A]/70 via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">

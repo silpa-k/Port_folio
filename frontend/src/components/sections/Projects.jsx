@@ -16,32 +16,29 @@ export default function Projects() {
             </h2>
           </div>
           <p className="text-white/60 max-w-md text-[15px] leading-relaxed">
-            A small slice of recent work — from neo-banking to commerce. Each one obsessed over
-            until it felt inevitable.
+            A curated slice of recent work — from beauty commerce to HR dashboards and brand
+            identity systems. Each one obsessed over until it felt inevitable.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((p, idx) => {
-            const featured = idx === 0;
-            return (
-              <ProjectCard key={p.id} project={p} featured={featured} className={featured ? 'md:col-span-2' : ''} />
-            );
-          })}
+          {projects.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project, featured, className = '' }) {
+function ProjectCard({ project }) {
   const [ref, inView] = useReveal();
   return (
     <article
       ref={ref}
-      className={`reveal ${inView ? 'in-view' : ''} project-card group ${className}`}
+      className={`reveal ${inView ? 'in-view' : ''} project-card group`}
     >
-      <div className={`relative ${featured ? 'aspect-[16/9]' : 'aspect-[4/3]'} overflow-hidden`}>
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a2e]">
         <img
           src={project.cover}
           alt={project.title}
@@ -49,7 +46,7 @@ function ProjectCard({ project, featured, className = '' }) {
           className="project-cover absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F1A] via-[#0F0F1A]/30 to-transparent" />
-        <div className="absolute top-5 left-5 flex items-center gap-2">
+        <div className="absolute top-5 left-5 flex items-center gap-2 flex-wrap">
           <span className="text-[11.5px] uppercase tracking-wider px-2.5 py-1 rounded-full glass-strong text-white/85">
             {project.tag}
           </span>
@@ -65,26 +62,22 @@ function ProjectCard({ project, featured, className = '' }) {
       </div>
 
       <div className="p-6 md:p-7">
-        <div className="flex items-start justify-between gap-6">
-          <h3 className="font-display text-2xl md:text-[28px] font-semibold tracking-tight">
-            {project.title}
-          </h3>
-          <div className="flex items-center gap-4 shrink-0">
-            {project.metrics.map((m) => (
-              <div key={m.k} className="text-right">
-                <div className="font-display text-base md:text-lg font-semibold" style={{ color: project.accent }}>
-                  {m.v}
-                </div>
-                <div className="text-[10.5px] uppercase tracking-wider text-white/45">
-                  {m.k}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <p className="mt-3 text-[14.5px] text-white/60 leading-relaxed max-w-xl">
+        <h3 className="font-display text-2xl md:text-[26px] font-semibold tracking-tight">
+          {project.title}
+        </h3>
+        <p className="mt-3 text-[14.5px] text-white/60 leading-relaxed">
           {project.description}
         </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.chips?.map((c) => (
+            <span
+              key={c}
+              className="text-[11.5px] px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/10 text-white/70"
+            >
+              {c}
+            </span>
+          ))}
+        </div>
         <button
           type="button"
           onClick={() => alert(`Case study for "${project.title}" coming soon ✨`)}
