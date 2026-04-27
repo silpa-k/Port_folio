@@ -63,7 +63,7 @@ export default function Footer() {
             © {new Date().getFullYear()} {profile.name}. Designed & coded with love.
           </p>
           <p className="text-[12.5px] text-white/40">
-            Built in Figma → React. Hosted with care.
+            © 2026 Silpa Kumari.
           </p>
         </div>
       </div>
