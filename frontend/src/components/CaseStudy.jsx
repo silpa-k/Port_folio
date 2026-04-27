@@ -20,6 +20,7 @@ import {
   Map,
   PenTool,
   Layout,
+  Play,
 } from 'lucide-react';
 import { projects, profile, RESUME_URL } from '../mock';
 
@@ -216,6 +217,7 @@ const SECTION_META = {
   sitemap: { icon: Map, title: 'Sitemap' },
   wireframes: { icon: PenTool, title: 'Wireframes' },
   walkthrough: { icon: Layout, title: 'Final UI Walkthrough' },
+  prototype: { icon: Play, title: 'Prototype' },
   designGoals: { icon: Lightbulb, title: 'Design Goals' },
   features: { icon: Sparkles, title: 'Key Features' },
   impact: { icon: TrendingUp, title: 'Impact' },
@@ -285,6 +287,8 @@ function SectionRouter({ type, data, num, meta, project }) {
       return <WireframesSection data={data} num={num} meta={meta} />;
     case 'walkthrough':
       return <WalkthroughSection data={data} num={num} meta={meta} accent={accent} />;
+    case 'prototype':
+      return <PrototypeSection data={data} num={num} meta={meta} accent={accent} />;
     case 'designGoals':
       return <DesignGoalsSection items={data} num={num} meta={meta} accent={accent} />;
     case 'features':
@@ -336,12 +340,12 @@ function GoalSection({ data, num, meta, accent }) {
       </div>
       {image && (
         <div className="mt-6 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white">
+          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[460px]">
             <img
               src={image}
               alt="Goal"
               loading="lazy"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto max-h-[460px] object-contain"
             />
           </div>
         </div>
@@ -378,12 +382,12 @@ function ResearchSection({ data, num, meta, accent }) {
       )}
       {data.image && (
         <div className="mt-7 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white">
+          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[460px]">
             <img
               src={data.image}
               alt="Research"
               loading="lazy"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto max-h-[460px] object-contain"
             />
           </div>
         </div>
@@ -539,12 +543,12 @@ function MarketResearchSection({ data, num, meta, accent }) {
       )}
       {data.image && (
         <div className="mt-7 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white">
+          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[520px]">
             <img
               src={data.image}
               alt="Market research"
               loading="lazy"
-              className="w-full h-auto object-contain"
+              className="w-full h-auto max-h-[520px] object-contain"
             />
           </div>
         </div>
@@ -563,12 +567,12 @@ function SingleImageSection({ data, num, meta }) {
         </p>
       )}
       <div className="mt-7 relative rounded-[24px] overflow-hidden glass-strong p-2.5">
-        <div className="rounded-[18px] overflow-hidden bg-white">
+        <div className="rounded-[18px] overflow-hidden bg-white flex items-center justify-center max-h-[640px]">
           <img
             src={data.image}
             alt={data.label || meta.title}
             loading="lazy"
-            className="w-full h-auto object-contain"
+            className="w-full h-auto max-h-[640px] object-contain"
           />
         </div>
       </div>
@@ -591,12 +595,12 @@ function WireframesSection({ data, num, meta }) {
             key={i}
             className="relative rounded-[20px] overflow-hidden glass-strong p-2"
           >
-            <div className="rounded-[14px] overflow-hidden bg-white">
+            <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[520px]">
               <img
                 src={src}
                 alt={`Wireframe ${i + 1}`}
                 loading="lazy"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto max-h-[520px] object-contain"
               />
             </div>
           </div>
@@ -619,51 +623,97 @@ function WalkthroughSection({ data, num, meta, accent }) {
         {data.items.map((item) => (
           <div
             key={item.n}
-            className="glass rounded-[22px] p-6 hover:border-white/20 transition-colors"
+            className="glass rounded-[22px] overflow-hidden hover:border-white/20 transition-colors flex flex-col"
           >
-            <div className="flex items-start justify-between gap-4">
-              <div
-                className="font-display text-sm font-semibold w-9 h-9 grid place-items-center rounded-lg shrink-0"
-                style={{
-                  background: `${accent}18`,
-                  border: `1px solid ${accent}40`,
-                  color: accent,
-                }}
-              >
-                {item.n}
-              </div>
-              {item.metric && (
-                <div className="text-right shrink-0">
-                  <div
-                    className="font-display text-lg font-semibold"
-                    style={{ color: accent }}
-                  >
-                    {item.metric.v}
-                  </div>
-                  <div className="text-[10.5px] uppercase tracking-wider text-white/45">
-                    {item.metric.k}
-                  </div>
-                </div>
-              )}
-            </div>
-            <h4 className="font-display text-[19px] font-semibold mt-4 tracking-tight">
-              {item.title}
-            </h4>
-            <p className="mt-2 text-[14px] text-white/65 leading-relaxed">
-              {item.desc}
-            </p>
             {item.image && (
-              <div className="mt-4 rounded-xl overflow-hidden bg-white">
+              <div className="relative bg-white flex items-center justify-center h-[320px] md:h-[360px] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
                   loading="lazy"
-                  className="w-full h-auto object-contain"
+                  className="max-w-full max-h-full object-contain"
                 />
               </div>
             )}
+            <div className="p-6 flex-1 flex flex-col">
+              <div className="flex items-start justify-between gap-4">
+                <div
+                  className="font-display text-sm font-semibold w-9 h-9 grid place-items-center rounded-lg shrink-0"
+                  style={{
+                    background: `${accent}18`,
+                    border: `1px solid ${accent}40`,
+                    color: accent,
+                  }}
+                >
+                  {item.n}
+                </div>
+                {item.metric && (
+                  <div className="text-right shrink-0">
+                    <div
+                      className="font-display text-lg font-semibold"
+                      style={{ color: accent }}
+                    >
+                      {item.metric.v}
+                    </div>
+                    <div className="text-[10.5px] uppercase tracking-wider text-white/45">
+                      {item.metric.k}
+                    </div>
+                  </div>
+                )}
+              </div>
+              <h4 className="font-display text-[19px] font-semibold mt-4 tracking-tight">
+                {item.title}
+              </h4>
+              <p className="mt-2 text-[14px] text-white/65 leading-relaxed">
+                {item.desc}
+              </p>
+            </div>
           </div>
         ))}
+      </div>
+    </Container>
+  );
+}
+
+function PrototypeSection({ data, num, meta, accent }) {
+  return (
+    <Container wide>
+      <SectionHeader icon={meta.icon} kicker={num} title={data.label || meta.title} />
+      {data.caption && (
+        <p className="text-[15px] text-white/65 leading-relaxed mt-4 max-w-2xl">
+          {data.caption}
+        </p>
+      )}
+      <div className="mt-7 relative rounded-[24px] overflow-hidden glass-strong p-2.5">
+        <div
+          className="rounded-[18px] overflow-hidden flex items-center justify-center relative"
+          style={{
+            background: `linear-gradient(135deg, ${accent}15 0%, #0a1628 100%)`,
+            minHeight: 360,
+          }}
+        >
+          {data.video ? (
+            <video
+              src={data.video}
+              controls
+              playsInline
+              loop
+              muted
+              autoPlay
+              poster={data.poster}
+              className="w-full h-auto max-h-[640px] object-contain"
+            >
+              Sorry, your browser doesn’t support embedded videos.
+            </video>
+          ) : data.image ? (
+            <img
+              src={data.image}
+              alt="Prototype"
+              loading="lazy"
+              className="w-full h-auto max-h-[640px] object-contain"
+            />
+          ) : null}
+        </div>
       </div>
     </Container>
   );
