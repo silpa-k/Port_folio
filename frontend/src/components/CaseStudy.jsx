@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -740,10 +740,19 @@ function IndustriesSection({ items, accent }) {
 }
 
 function IndustryBlock({ industry, accent, total, showDivider }) {
+  const [headRef, headIn] = useRevealLocal();
+  const [bodyRef, bodyIn] = useRevealLocal();
+  const [stepsRef, stepsIn] = useRevealLocal();
+  const [closingRef, closingIn] = useRevealLocal();
+  const [collageRef, collageIn] = useRevealLocal();
+
   return (
     <section className="relative">
       {/* Centered Heading Block */}
-      <div className="max-w-3xl mx-auto px-6 text-center">
+      <div
+        ref={headRef}
+        className={`max-w-3xl mx-auto px-6 text-center reveal ${headIn ? 'in-view' : ''}`}
+      >
         <div className="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-white/55 mb-5">
           <span className="block w-6 h-px bg-white/30" />
           {industry.number} / {String(total).padStart(2, '0')}
@@ -761,7 +770,12 @@ function IndustryBlock({ industry, accent, total, showDivider }) {
       </div>
 
       {/* Body paragraphs */}
-      <div className="max-w-3xl mx-auto px-6 mt-10 space-y-5">
+      <div
+        ref={bodyRef}
+        className={`max-w-3xl mx-auto px-6 mt-10 space-y-5 reveal reveal-delay-1 ${
+          bodyIn ? 'in-view' : ''
+        }`}
+      >
         {industry.paragraphs?.map((p, i) => (
           <p
             key={i}
@@ -778,7 +792,12 @@ function IndustryBlock({ industry, accent, total, showDivider }) {
 
       {/* Steps (optional) */}
       {industry.steps && industry.steps.length > 0 && (
-        <div className="max-w-4xl mx-auto px-6 mt-12 grid sm:grid-cols-2 gap-4">
+        <div
+          ref={stepsRef}
+          className={`max-w-4xl mx-auto px-6 mt-12 grid sm:grid-cols-2 gap-4 reveal reveal-delay-2 ${
+            stepsIn ? 'in-view' : ''
+          }`}
+        >
           {industry.steps.map((step) => (
             <div key={step.n} className="glass rounded-2xl p-6">
               <div className="flex items-center gap-3">
@@ -814,7 +833,12 @@ function IndustryBlock({ industry, accent, total, showDivider }) {
 
       {/* Closing paragraphs */}
       {industry.closing && industry.closing.length > 0 && (
-        <div className="max-w-3xl mx-auto px-6 mt-10 space-y-4">
+        <div
+          ref={closingRef}
+          className={`max-w-3xl mx-auto px-6 mt-10 space-y-4 reveal reveal-delay-1 ${
+            closingIn ? 'in-view' : ''
+          }`}
+        >
           {industry.closing.map((p, i) => (
             <p
               key={i}
@@ -828,7 +852,12 @@ function IndustryBlock({ industry, accent, total, showDivider }) {
 
       {/* Image collage */}
       {industry.images && industry.images.length > 0 && (
-        <div className="max-w-6xl mx-auto px-6 mt-14">
+        <div
+          ref={collageRef}
+          className={`max-w-6xl mx-auto px-6 mt-14 reveal reveal-delay-2 ${
+            collageIn ? 'in-view' : ''
+          }`}
+        >
           <ImageCollage images={industry.images} accent={accent} />
         </div>
       )}
@@ -851,58 +880,24 @@ function IndustryBlock({ industry, accent, total, showDivider }) {
 }
 
 function ImageCollage({ images, accent }) {
-  const n = images.length;
-
-  if (n <= 4) {
-    return (
-      <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
-        {images.map((src, i) => (
-          <CollageImage key={i} src={src} index={i} ratio="aspect-[4/5]" accent={accent} />
-        ))}
-      </div>
-    );
-  }
-
-  if (n === 5) {
-    return (
-      <div className="grid md:grid-cols-12 gap-4 md:gap-5">
-        <div className="md:col-span-7">
-          <CollageImage src={images[0]} index={0} ratio="aspect-[4/3]" accent={accent} />
-        </div>
-        <div className="md:col-span-5 grid grid-cols-2 gap-4 md:gap-5">
-          {images.slice(1).map((src, i) => (
-            <CollageImage
-              key={i}
-              src={src}
-              index={i + 1}
-              ratio="aspect-square"
-              accent={accent}
-            />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
+  // Masonry layout — every image keeps its natural aspect ratio.
+  // Uses CSS column-count which is the cleanest pure-CSS masonry for varying image heights.
   return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
-      {images.map((src, i) => {
-        const span = i === 0 && n >= 7 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : '';
-        const r = i === 0 && n >= 7 ? 'aspect-[16/10]' : 'aspect-[4/5]';
-        return (
-          <div key={i} className={span}>
-            <CollageImage src={src} index={i} ratio={r} accent={accent} />
-          </div>
-        );
-      })}
+    <div
+      className="[column-fill:_balance] columns-1 sm:columns-2 lg:columns-3 gap-4 md:gap-5"
+      style={{ columnGap: '1.25rem' }}
+    >
+      {images.map((src, i) => (
+        <CollageImage key={i} src={src} index={i} accent={accent} />
+      ))}
     </div>
   );
 }
 
-function CollageImage({ src, index, ratio = 'aspect-[4/5]', accent }) {
+function CollageImage({ src, index, accent }) {
   return (
     <div
-      className={`relative ${ratio} rounded-[20px] overflow-hidden group`}
+      className="mb-4 md:mb-5 break-inside-avoid relative rounded-[20px] overflow-hidden group"
       style={{
         background: `linear-gradient(135deg, ${accent}10 0%, #14142B 100%)`,
       }}
@@ -911,11 +906,35 @@ function CollageImage({ src, index, ratio = 'aspect-[4/5]', accent }) {
         src={src}
         alt={`Brand visual ${index + 1}`}
         loading="lazy"
-        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+        className="w-full h-auto block transition-transform duration-700 group-hover:scale-[1.02]"
       />
       <div className="absolute inset-0 ring-1 ring-inset ring-white/5 rounded-[20px] pointer-events-none" />
     </div>
   );
+}
+
+/* Local reveal hook (avoids extra import path) */
+function useRevealLocal() {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setInView(true);
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    obs.observe(node);
+    return () => obs.disconnect();
+  }, []);
+  return [ref, inView];
 }
 
 
