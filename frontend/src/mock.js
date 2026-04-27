@@ -57,49 +57,33 @@ export const projects = [
     timeline: '1 week',
     tools: 'Figma',
     rich: {
-      heroImage: '/assets/nykaa/hero-new.webp',
-      compareBefore: '/assets/nykaa/original.avif',
-      compareAfter: '/assets/nykaa/hero-new.webp',
+      layout: [
+        'overview',
+        'goal',
+        'research',
+        'designGoals',
+        'features',
+        'impact',
+        'future',
+        'conclusion',
+      ],
+      heroImage: '/assets/nykaa/hero.png',
       overview:
         'Nykaa is India’s leading beauty e-commerce platform with 5M+ monthly users. Despite its strong brand presence, the app struggled with cluttered UI, poor navigation, and limited personalization — often resulting in frustrated users and higher cart abandonment rates.',
-      goal:
-        'Redesign the app to simplify navigation, improve product discovery, and create a personalized, inclusive shopping experience.',
-      researchSummary:
-        'I conducted user research with 15 participants across age groups and shopping habits to understand real pain points before opening Figma.',
-      researchStats: [
-        { value: '15', label: 'Users interviewed' },
-        { value: '60%', label: 'reported difficulty finding products' },
-        { value: '45%', label: 'abandoned carts due to complex navigation' },
-      ],
-      features: [
-        {
-          n: '01',
-          title: 'Clutter-Free Landing Page',
-          desc: 'Reduced visual noise and simplified categories improved clarity. Hero, categories, and offers now have a clear, breathable hierarchy.',
-          image: '/assets/nykaa/hero-new.webp',
-        },
-        {
-          n: '02',
-          title: 'Voice Assistant',
-          desc: 'Search products by speaking — reduced average search time by 20% and made the experience more accessible for hands-busy moments.',
-          image: '/assets/nykaa/voice-search.webp',
-          imageBg: '#FFFFFF',
-        },
-        {
-          n: '03',
-          title: 'Visual Search',
-          desc: 'Upload an image to find similar products — improved discovery rate by 25%. Perfect for screenshots and inspiration from social media.',
-          image: '/assets/nykaa/image-search.webp',
-          imageBg: '#FFFFFF',
-        },
-        {
-          n: '04',
-          title: 'Comparison Tool',
-          desc: 'Side-by-side product evaluation — helped 70% of users make quicker purchase decisions, especially in skincare and foundation categories.',
-          image: '/assets/nykaa/visual-search.webp',
-          imageBg: '#FFFFFF',
-        },
-      ],
+      goal: {
+        text: 'Redesign the app to simplify navigation, improve product discovery, and create a personalized, inclusive shopping experience.',
+        image: '/assets/nykaa/goal.png',
+      },
+      research: {
+        summary:
+          'I conducted user research with 15 participants across age groups and shopping habits to understand real pain points before opening Figma.',
+        stats: [
+          { value: '15', label: 'Users interviewed' },
+          { value: '60%', label: 'reported difficulty finding products' },
+          { value: '45%', label: 'abandoned carts due to complex navigation' },
+        ],
+        image: '/assets/nykaa/research.png',
+      },
       designGoals: [
         {
           title: 'Decluttered UI',
@@ -112,6 +96,35 @@ export const projects = [
         {
           title: 'Smart comparison',
           desc: 'Easy side-by-side evaluation so users can buy with confidence, not regret.',
+        },
+      ],
+      features: [
+        {
+          n: '01',
+          title: 'Clutter-Free Landing Page',
+          desc: 'Reduced visual noise and simplified categories improved clarity. Hero, categories, and offers now have a clear, breathable hierarchy.',
+          image: '/assets/nykaa/clutter.png',
+        },
+        {
+          n: '02',
+          title: 'Voice Assistant',
+          desc: 'Search products by speaking — reduced average search time by 20% and made the experience more accessible for hands-busy moments.',
+          image: '/assets/nykaa/voice.png',
+          imageBg: '#FFFFFF',
+        },
+        {
+          n: '03',
+          title: 'Visual Search',
+          desc: 'Upload an image to find similar products — improved discovery rate by 25%. Perfect for screenshots and inspiration from social media.',
+          image: '/assets/nykaa/visual1.png',
+          imageBg: '#FFFFFF',
+        },
+        {
+          n: '04',
+          title: 'Comparison Tool',
+          desc: 'Side-by-side product evaluation — helped 70% of users make quicker purchase decisions, especially in skincare and foundation categories.',
+          image: '/assets/nykaa/comparison.png',
+          imageBg: '#FFFFFF',
         },
       ],
       impact: [
@@ -127,23 +140,6 @@ export const projects = [
       conclusion:
         'Redesigning Nykaa was a rewarding challenge that combined user research, visual design, and accessibility thinking. The solution significantly improved usability and engagement, while aligning Nykaa’s digital presence with its premium brand identity.',
     },
-    overview:
-      'Nykaa is India’s largest beauty and lifestyle e-retailer with millions of monthly active users. The current experience, while functional, felt cluttered on mobile and made discovery harder than it needed to be.',
-    problem:
-      'Users were dropping off during product discovery — too many competing CTAs, weak hierarchy, and inconsistent visual language across category and PDP screens.',
-    process: [
-      'Audited 30+ screens across web & mobile',
-      'Mapped 4 primary user journeys (browse, search, cart, checkout)',
-      'Ran a competitive teardown of Sephora, Tira, Myntra Beauty',
-      'Co-created a refreshed visual language with the brand team',
-    ],
-    solution:
-      'A calmer, content-forward home, modular product cards, and a sharpened type system that keeps Nykaa’s playful brand tone but removes visual noise. Mobile gets a re-thought bottom-nav and a snappier filter sheet.',
-    outcome: [
-      { k: 'Add-to-cart rate', v: '+24%' },
-      { k: 'Time on PDP', v: '+18%' },
-      { k: 'Visual clutter score', v: '-42%' },
-    ],
   },
   {
     id: 'soapygo',
@@ -156,26 +152,158 @@ export const projects = [
     coverFit: 'contain',
     coverBg: 'linear-gradient(135deg, #1d3557 0%, #0a1628 100%)',
     accent: '#00F5D4',
-    chips: ['UI/UX', 'Product Strategy', 'E-commerce'],
-    overview:
-      'SoapyGo is a hyperlocal laundry-on-demand service for urban professionals. The MVP needed an end-to-end mobile experience — from booking to delivery — that felt as simple as ordering food.',
-    problem:
-      'Existing laundry apps lacked transparency: no live status, opaque pricing, and confusing service categories. Users didn’t trust the experience enough to repeat.',
-    process: [
-      'User interviews with 12 working professionals in Bengaluru',
-      'Service blueprinting across 5 stages: book, pickup, wash, fold, deliver',
-      'Wireframed 22 screens; rapid Figma prototype in week 2',
-      'Two rounds of usability tests with iterative refinement',
-    ],
-    solution:
-      'A bold, friendly visual identity (the yellow “SG” mark) and clear service categories — Quick Wash, Wash & Fold, Dry Clean. Live order tracking with timeline UI, transparent pricing, and one-tap rebook.',
-    outcome: [
-      { k: 'First-week retention', v: '+38%' },
-      { k: 'Avg booking time', v: '47s' },
-      { k: 'Customer rating', v: '4.7 / 5' },
-    ],
-    timeline: '8 weeks',
-    role: 'Product Designer (end-to-end)',
+    chips: ['UI/UX', 'Product Strategy', 'Mobile App'],
+    role: 'UX/UI Designer',
+    timeline: '2 weeks',
+    tools: 'Figma',
+    rich: {
+      layout: [
+        'overview',
+        'goal',
+        'problem',
+        'solution',
+        'challenges',
+        'marketResearch',
+        'userFlow',
+        'sitemap',
+        'wireframes',
+        'walkthrough',
+        'future',
+        'conclusion',
+      ],
+      heroImage: '/assets/soapygo.png',
+      overview:
+        'SoapyGo is a laundry app that helps users book washing, folding, ironing, and dry-cleaning services with doorstep pickup and delivery — designed for busy urban professionals.',
+      goal: {
+        text: 'To build an intuitive end-to-end laundry service flow with clear pricing, simplified booking, and real-time order visibility for everyday users.',
+      },
+      problem: {
+        summary:
+          'Users struggle with local laundry stores due to fragmented experiences, opaque pricing, and zero visibility into their orders.',
+        stats: [
+          { value: '83%', label: 'couldn’t track pickup or delivery' },
+          { value: '68%', label: 'found pricing unclear' },
+          { value: '55%', label: 'had communication issues' },
+        ],
+      },
+      solution: {
+        summary:
+          'I designed SoapyGo, an app that simplifies laundry from one-tap booking to doorstep delivery — with real-time updates and transparent pricing baked in.',
+        items: [
+          'Booking time reduced by 41%',
+          'Direct chat with service providers',
+          'Real-time pickup and delivery reminders',
+          'Confusion around pricing dropped from 68% → 12%',
+        ],
+      },
+      challenges: [
+        {
+          title: 'High drop-off during signup',
+          desc: '42% of users quit at the phone-number / OTP step.',
+          tag: 'Onboarding',
+        },
+        {
+          title: 'Complex service selection',
+          desc: 'Too many service categories at once led to cognitive load.',
+          tag: 'IA',
+        },
+        {
+          title: 'No live order visibility',
+          desc: 'Users were calling store owners directly for status updates.',
+          tag: 'Trust',
+        },
+      ],
+      marketResearch: {
+        summary:
+          'Competitor analysis across UrbanClap, Tumbledry, and PressTo revealed a consistent gap: customers wanted live status, not call-backs.',
+        stats: [
+          { value: '67%', label: 'prefer apps that show real-time order status' },
+        ],
+        image: '/assets/soapygo/research.avif',
+      },
+      userFlow: {
+        label: 'User Flow',
+        caption:
+          'End-to-end happy path — from sign-up through booking, pickup, tracking, and delivery.',
+        image: '/assets/soapygo/userflow.avif',
+      },
+      sitemap: {
+        label: 'Sitemap',
+        caption:
+          'Information architecture — every screen mapped against primary user goals.',
+        image: '/assets/soapygo/sitemap.avif',
+      },
+      wireframes: {
+        label: 'Wireframes',
+        caption: 'Low-fidelity structure to define hierarchy and flow before pixel polish.',
+        images: ['/assets/soapygo/wireframe1.avif', '/assets/soapygo/wireframe2.avif'],
+      },
+      walkthrough: {
+        label: 'Final UI Walkthrough',
+        sub: 'Each screen, intentional. Each metric, measured.',
+        items: [
+          {
+            n: '01',
+            title: 'Splash → Onboarding',
+            desc: 'Created a friendly splash + 3-step onboarding that reduced drop-offs during testing by 22%.',
+            metric: { v: '-22%', k: 'onboarding drop-off' },
+          },
+          {
+            n: '02',
+            title: 'Login / Signup / OTP',
+            desc: 'Simplified login with single field + auto-OTP detection.',
+            metric: { v: '52s → 21s', k: 'login time' },
+          },
+          {
+            n: '03',
+            title: 'Homepage',
+            desc: 'Personalized dashboard with key categories and a promo carousel. Users found services 33% faster, and the offers card got 71% more attention.',
+            metric: { v: '+33%', k: 'service discovery speed' },
+          },
+          {
+            n: '04',
+            title: 'Browse Services',
+            desc: 'Service list redesigned with big photo cards + distance/time labels for clarity. Segmented tab bar to switch between Tops, Bottoms, Dresses easily; visual item add/remove.',
+          },
+          {
+            n: '05',
+            title: 'Schedule Pickup',
+            desc: 'A clean calendar + time-slot picker dramatically improved completion.',
+            metric: { v: '62% → 91%', k: 'pickup-success rate' },
+          },
+          {
+            n: '06',
+            title: 'Chat',
+            desc: 'In-app chat helps users coordinate specific requests. 6 of 8 users in testing said it “reduced anxiety about pickup”.',
+          },
+          {
+            n: '07',
+            title: 'Order Summary + Confirmation',
+            desc: 'Crystal-clear pricing breakdown with no last-minute surprises — a single source of truth for the order.',
+          },
+          {
+            n: '08',
+            title: 'My Orders + Tracking',
+            desc: 'Added a 5-stage visual tracker, reducing “Where is my laundry?” calls by 62% in usability testing.',
+            metric: { v: '-62%', k: 'support calls' },
+          },
+        ],
+      },
+      future: [
+        'Smart auto-scheduling that predicts user laundry cycles.',
+        'Real-time delivery map (Swiggy / Zepto-style live tracking).',
+        'Subscription plans with monthly packages to improve retention.',
+      ],
+      conclusion: {
+        text: 'Designing SoapyGo helped me understand the importance of clarity, predictability, and micro-interactions in a service-based app. By simplifying the booking flow, improving service-selection visibility, and enabling real-time tracking and communication, the product became significantly more user-friendly and reliable.',
+        metrics: [
+          { value: '31%', label: 'faster signup' },
+          { value: '22%', label: 'increase in service discovery' },
+          { value: '28%', label: 'faster decision-making' },
+          { value: '40%', label: 'fewer support calls' },
+        ],
+      },
+    },
   },
   {
     id: 'trakle',
@@ -183,30 +311,132 @@ export const projects = [
     tag: 'B2B · Web Dashboard',
     year: '2024',
     description:
-      'Designing a unified HR system that reduces manual effort and improves team visibility — finance, goals, and people in one place.',
+      'Designing a unified HR system that reduces manual effort, improves team visibility, and enhances decision-making efficiency.',
     cover: '/assets/trakle.png',
     coverFit: 'cover',
     accent: '#A78BFA',
-    chips: ['Product Design', 'Tech Design', 'Data Viz'],
-    overview:
-      'TRAKLE is a B2B HR + finance dashboard for small business owners juggling payroll, expenses, and team goals across messy spreadsheets.',
-    problem:
-      'Owners were stitching data from 4–5 tools daily. There was no single source of truth for cash, goals, or upcoming bills — and existing dashboards felt cold and corporate.',
-    process: [
-      'Stakeholder interviews with 6 SMB founders',
-      'Information architecture for the unified dashboard',
-      'Designed a custom data-viz component library',
-      'Iterated on dark + light themes for long sessions',
-    ],
-    solution:
-      'A single overview screen surfacing balance, goals, upcoming bills, and recent transactions — all glanceable. A bold purple/pink accent system keeps the dashboard human, not clinical. Modular cards adapt across tenant types.',
-    outcome: [
-      { k: 'Tools consolidated', v: '5 → 1' },
-      { k: 'Daily time saved', v: '~45 min' },
-      { k: 'Activation rate', v: '+52%' },
-    ],
-    timeline: '10 weeks',
-    role: 'Product Designer + Data-viz lead',
+    chips: ['Product Design', 'SaaS', 'Data Viz'],
+    role: 'Product Designer',
+    timeline: '10 days',
+    tools: 'Figma',
+    rich: {
+      layout: [
+        'overview',
+        'goal',
+        'problem',
+        'solution',
+        'challenges',
+        'marketResearch',
+        'walkthrough',
+        'impact',
+        'future',
+        'conclusion',
+      ],
+      heroImage: '/assets/trakle.png',
+      overview:
+        'Trakle is an HR Management SaaS dashboard designed to centralize HR, employee, and project operations for small-to-mid-sized companies. The idea was to create an intelligent workspace where HRs can monitor performance, approve transactions, and assign tasks — all in real time.',
+      goal: {
+        text: 'To create a single source of truth so HRs and team leads make faster, data-driven decisions.',
+      },
+      problem: {
+        summary:
+          'HR teams used multiple tools (spreadsheets, email, standalone apps). This fragmented workflow caused time spent switching tools, manual reconciliation, and missed approvals.',
+        stats: [
+          { value: '65%', label: 'of HRs reported >2 hours/day on manual tracking' },
+          { value: '6+', label: 'clicks needed for approvals across systems' },
+        ],
+      },
+      solution: {
+        summary:
+          'Trakle centralizes login, HR & employee panels, transactions, projects, and overview reports — automating attendance tracking, clarifying transactions, and surfacing top KPIs.',
+        items: [
+          'Reduced manual HR tasks by 40%',
+          'Cut average approval steps from 6 → 3',
+          'Improved visibility by 55% in prototype tests',
+        ],
+      },
+      challenges: [
+        {
+          title: 'Data fragmentation',
+          desc: 'Multiple data sources made it hard to trust reports.',
+          tag: 'Data',
+        },
+        {
+          title: 'Overloaded UI',
+          desc: 'Large tables made problem diagnosis slow.',
+          tag: 'UX',
+        },
+        {
+          title: 'Slow approvals',
+          desc: 'Managers performed many clicks to approve payroll or tasks.',
+          tag: 'Workflow',
+        },
+      ],
+      marketResearch: {
+        summary:
+          'I benchmarked Trakle against Zoho People, Keka, and Darwinbox to find gaps in speed, onboarding clarity, and visualization.',
+        stats: [
+          { value: '68%', label: 'of HRs prefer dashboards with “one-click insights”' },
+          { value: '~3.2s', label: 'Trakle prototype target load time (vs typical 7–9s)' },
+        ],
+      },
+      walkthrough: {
+        label: 'Final UI Walkthrough',
+        sub: 'A modular system that scales from 5-person teams to 500-person ops.',
+        items: [
+          {
+            n: '01',
+            title: 'Login / Signup',
+            desc: 'Smooth micro-interactions with real-time error checks. Users get to work in seconds, not minutes.',
+          },
+          {
+            n: '02',
+            title: 'HR Panel',
+            desc: 'Real-time payroll, attendance graphs, and project tracking — all in one glanceable layout.',
+          },
+          {
+            n: '03',
+            title: 'Employee Panel',
+            desc: 'Personalized project cards plus a calendar view that surfaces upcoming deadlines.',
+          },
+          {
+            n: '04',
+            title: 'Transactions',
+            desc: 'Filter by team or payment type; the data tells the story instead of hiding it.',
+          },
+          {
+            n: '05',
+            title: 'Projects Module',
+            desc: 'Progress overview, deadlines, and assigned members — accountability without micromanagement.',
+          },
+          {
+            n: '06',
+            title: 'Overview Dashboard',
+            desc: 'KPI cards, top performers, and task trends. The first screen HRs open every morning.',
+          },
+        ],
+      },
+      impact: [
+        { value: '40%', label: 'reduction in manual HR reporting time' },
+        { value: '3.2s', label: 'load time (60% faster than Zoho)' },
+        { value: '60%', label: 'increase in project visibility' },
+        { value: '9/10', label: 'HR users reported easier navigation' },
+      ],
+      future: [
+        'Payroll automation with downloadable slips.',
+        'AI-driven team performance analytics.',
+        'Integrations with Slack and Google Calendar.',
+        'Accessibility improvements (contrast + keyboard navigation).',
+      ],
+      conclusion: {
+        text: 'Trakle consolidated HR operations into a single product — reducing manual overhead, improving visibility, and accelerating decisions.',
+        metrics: [
+          { value: '40%', label: 'reduction in manual HR work' },
+          { value: '30%', label: 'faster task visibility' },
+          { value: '50%', label: 'fewer transaction tracking errors' },
+        ],
+      },
+    },
   },
   {
     id: 'brand',
@@ -219,6 +449,9 @@ export const projects = [
     coverFit: 'cover',
     accent: '#6C5CE7',
     chips: ['Branding', 'Visual Identity', 'Social Media'],
+    role: 'Visual / Brand Designer',
+    timeline: 'Ongoing',
+    tools: 'Figma · Illustrator · Photoshop',
     overview:
       'A collection of brand and campaign work spanning beauty, F&B, sportswear, and audio — each rooted in a clear point of view and translated across formats.',
     problem:
@@ -236,8 +469,6 @@ export const projects = [
       { k: 'Avg engagement lift', v: '+34%' },
       { k: 'Asset templates', v: '40+' },
     ],
-    timeline: 'Ongoing',
-    role: 'Visual / Brand Designer',
   },
 ];
 
