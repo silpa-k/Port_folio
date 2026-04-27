@@ -44,13 +44,89 @@ export const projects = [
   {
     id: 'nykaa',
     title: 'Nykaa — Website Redesign',
-    tag: 'eCommerce · Web + Mobile',
+    tag: 'eCommerce · Mobile App',
     year: '2025',
     description:
       'Improving usability, personalization, and product discovery for users — a fresh take on India’s leading beauty platform.',
-    cover: '/assets/nykaa.avif',
+    cover: '/assets/nykaa.webp',
+    coverFit: 'contain',
+    coverBg: 'linear-gradient(135deg, #2a1825 0%, #1a0f1a 100%)',
     accent: '#FF3F8E',
     chips: ['Visual Design', 'UI Polish', 'Mobile'],
+    role: 'UX/UI Designer',
+    timeline: '1 week',
+    tools: 'Figma',
+    rich: {
+      heroImage: '/assets/nykaa/hero-new.webp',
+      compareBefore: '/assets/nykaa/original.avif',
+      compareAfter: '/assets/nykaa/hero-new.webp',
+      overview:
+        'Nykaa is India’s leading beauty e-commerce platform with 5M+ monthly users. Despite its strong brand presence, the app struggled with cluttered UI, poor navigation, and limited personalization — often resulting in frustrated users and higher cart abandonment rates.',
+      goal:
+        'Redesign the app to simplify navigation, improve product discovery, and create a personalized, inclusive shopping experience.',
+      researchSummary:
+        'I conducted user research with 15 participants across age groups and shopping habits to understand real pain points before opening Figma.',
+      researchStats: [
+        { value: '15', label: 'Users interviewed' },
+        { value: '60%', label: 'reported difficulty finding products' },
+        { value: '45%', label: 'abandoned carts due to complex navigation' },
+      ],
+      features: [
+        {
+          n: '01',
+          title: 'Clutter-Free Landing Page',
+          desc: 'Reduced visual noise and simplified categories improved clarity. Hero, categories, and offers now have a clear, breathable hierarchy.',
+          image: '/assets/nykaa/hero-new.webp',
+        },
+        {
+          n: '02',
+          title: 'Voice Assistant',
+          desc: 'Search products by speaking — reduced average search time by 20% and made the experience more accessible for hands-busy moments.',
+          image: '/assets/nykaa/voice-search.webp',
+          imageBg: '#FFFFFF',
+        },
+        {
+          n: '03',
+          title: 'Visual Search',
+          desc: 'Upload an image to find similar products — improved discovery rate by 25%. Perfect for screenshots and inspiration from social media.',
+          image: '/assets/nykaa/image-search.webp',
+          imageBg: '#FFFFFF',
+        },
+        {
+          n: '04',
+          title: 'Comparison Tool',
+          desc: 'Side-by-side product evaluation — helped 70% of users make quicker purchase decisions, especially in skincare and foundation categories.',
+          image: '/assets/nykaa/visual-search.webp',
+          imageBg: '#FFFFFF',
+        },
+      ],
+      designGoals: [
+        {
+          title: 'Decluttered UI',
+          desc: 'Minimal layout with smooth, predictable navigation that respects the user’s time.',
+        },
+        {
+          title: 'AI-powered discovery',
+          desc: 'Voice & image search remove the friction of typing the “right” query.',
+        },
+        {
+          title: 'Smart comparison',
+          desc: 'Easy side-by-side evaluation so users can buy with confidence, not regret.',
+        },
+      ],
+      impact: [
+        { value: '30%', label: 'faster navigation time (task completion test)' },
+        { value: '80%', label: 'preferred the redesigned flow during usability testing' },
+        { value: '25%', label: 'increase in successful product discovery' },
+      ],
+      future: [
+        'Personalized recommendations powered by AI.',
+        'AR Try-On for cosmetics — virtual swatches in real time.',
+        'Accessibility-first features (contrast modes, screen reader support).',
+      ],
+      conclusion:
+        'Redesigning Nykaa was a rewarding challenge that combined user research, visual design, and accessibility thinking. The solution significantly improved usability and engagement, while aligning Nykaa’s digital presence with its premium brand identity.',
+    },
     overview:
       'Nykaa is India’s largest beauty and lifestyle e-retailer with millions of monthly active users. The current experience, while functional, felt cluttered on mobile and made discovery harder than it needed to be.',
     problem:
@@ -68,8 +144,6 @@ export const projects = [
       { k: 'Time on PDP', v: '+18%' },
       { k: 'Visual clutter score', v: '-42%' },
     ],
-    timeline: '6 weeks',
-    role: 'Lead Visual Designer',
   },
   {
     id: 'soapygo',
@@ -79,6 +153,8 @@ export const projects = [
     description:
       'Redefining convenience and transparency in daily laundry services. From scheduling to live tracking, designed end-to-end.',
     cover: '/assets/soapygo.png',
+    coverFit: 'contain',
+    coverBg: 'linear-gradient(135deg, #1d3557 0%, #0a1628 100%)',
     accent: '#00F5D4',
     chips: ['UI/UX', 'Product Strategy', 'E-commerce'],
     overview:
@@ -109,6 +185,7 @@ export const projects = [
     description:
       'Designing a unified HR system that reduces manual effort and improves team visibility — finance, goals, and people in one place.',
     cover: '/assets/trakle.png',
+    coverFit: 'cover',
     accent: '#A78BFA',
     chips: ['Product Design', 'Tech Design', 'Data Viz'],
     overview:
@@ -139,6 +216,7 @@ export const projects = [
     description:
       'Branding, visual identity, campaigns, and social-media posts crafted to match each brand’s soul — from neon perfume drops to typographic posters.',
     cover: '/assets/brand.png',
+    coverFit: 'cover',
     accent: '#6C5CE7',
     chips: ['Branding', 'Visual Identity', 'Social Media'],
     overview:

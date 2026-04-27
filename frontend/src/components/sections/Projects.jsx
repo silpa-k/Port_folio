@@ -34,20 +34,30 @@ export default function Projects() {
 
 function ProjectCard({ project }) {
   const [ref, inView] = useReveal();
+  const isContain = project.coverFit === 'contain';
   return (
     <article
       ref={ref}
       className={`reveal ${inView ? 'in-view' : ''} project-card group`}
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-[#1a1a2e]">
+      <div
+        className="relative aspect-[4/3] overflow-hidden"
+        style={{
+          background:
+            project.coverBg ||
+            `linear-gradient(135deg, ${project.accent}22 0%, #14142B 100%)`,
+        }}
+      >
         <img
           src={project.cover}
           alt={project.title}
           loading="lazy"
-          className="project-cover absolute inset-0 w-full h-full object-cover"
+          className={`project-cover absolute inset-0 w-full h-full ${
+            isContain ? 'object-contain p-6 sm:p-8' : 'object-cover'
+          }`}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F1A] via-[#0F0F1A]/30 to-transparent" />
-        <div className="absolute top-5 left-5 flex items-center gap-2 flex-wrap">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F1A]/80 via-transparent to-transparent pointer-events-none" />
+        <div className="absolute top-5 left-5 flex items-center gap-2 flex-wrap z-10">
           <span className="text-[11.5px] uppercase tracking-wider px-2.5 py-1 rounded-full glass-strong text-white/85">
             {project.tag}
           </span>
@@ -55,8 +65,8 @@ function ProjectCard({ project }) {
             {project.year}
           </span>
         </div>
-        <div className="absolute top-5 right-5">
-          <div className="project-arrow w-11 h-11 grid place-items-center rounded-full bg-white/10 text-white border border-white/20">
+        <div className="absolute top-5 right-5 z-10">
+          <div className="project-arrow w-11 h-11 grid place-items-center rounded-full bg-white/10 text-white border border-white/20 backdrop-blur">
             <ArrowUpRight size={18} />
           </div>
         </div>
