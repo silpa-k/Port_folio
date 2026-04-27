@@ -218,6 +218,7 @@ const SECTION_META = {
   wireframes: { icon: PenTool, title: 'Wireframes' },
   walkthrough: { icon: Layout, title: 'Final UI Walkthrough' },
   prototype: { icon: Play, title: 'Prototype' },
+  industries: { icon: Sparkles, title: 'Industries' },
   designGoals: { icon: Lightbulb, title: 'Design Goals' },
   features: { icon: Sparkles, title: 'Key Features' },
   impact: { icon: TrendingUp, title: 'Impact' },
@@ -289,6 +290,8 @@ function SectionRouter({ type, data, num, meta, project }) {
       return <WalkthroughSection data={data} num={num} meta={meta} accent={accent} />;
     case 'prototype':
       return <PrototypeSection data={data} num={num} meta={meta} accent={accent} />;
+    case 'industries':
+      return <IndustriesSection items={data} accent={accent} />;
     case 'designGoals':
       return <DesignGoalsSection items={data} num={num} meta={meta} accent={accent} />;
     case 'features':
@@ -340,7 +343,7 @@ function GoalSection({ data, num, meta, accent }) {
       </div>
       {image && (
         <div className="mt-6 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[460px]">
+          <div className="rounded-[14px] overflow-hidden bg-[#14142B] flex items-center justify-center max-h-[460px]">
             <img
               src={image}
               alt="Goal"
@@ -382,7 +385,7 @@ function ResearchSection({ data, num, meta, accent }) {
       )}
       {data.image && (
         <div className="mt-7 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[460px]">
+          <div className="rounded-[14px] overflow-hidden bg-[#14142B] flex items-center justify-center max-h-[460px]">
             <img
               src={data.image}
               alt="Research"
@@ -543,7 +546,7 @@ function MarketResearchSection({ data, num, meta, accent }) {
       )}
       {data.image && (
         <div className="mt-7 relative rounded-[20px] overflow-hidden glass-strong p-2">
-          <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[520px]">
+          <div className="rounded-[14px] overflow-hidden bg-[#14142B] flex items-center justify-center max-h-[520px]">
             <img
               src={data.image}
               alt="Market research"
@@ -567,7 +570,7 @@ function SingleImageSection({ data, num, meta }) {
         </p>
       )}
       <div className="mt-7 relative rounded-[24px] overflow-hidden glass-strong p-2.5">
-        <div className="rounded-[18px] overflow-hidden bg-white flex items-center justify-center max-h-[640px]">
+        <div className="rounded-[18px] overflow-hidden bg-[#14142B] flex items-center justify-center max-h-[640px]">
           <img
             src={data.image}
             alt={data.label || meta.title}
@@ -595,7 +598,7 @@ function WireframesSection({ data, num, meta }) {
             key={i}
             className="relative rounded-[20px] overflow-hidden glass-strong p-2"
           >
-            <div className="rounded-[14px] overflow-hidden bg-white flex items-center justify-center max-h-[520px]">
+            <div className="rounded-[14px] overflow-hidden bg-[#14142B] flex items-center justify-center max-h-[520px]">
               <img
                 src={src}
                 alt={`Wireframe ${i + 1}`}
@@ -626,7 +629,7 @@ function WalkthroughSection({ data, num, meta, accent }) {
             className="glass rounded-[22px] overflow-hidden hover:border-white/20 transition-colors flex flex-col"
           >
             {item.image && (
-              <div className="relative bg-white flex items-center justify-center h-[320px] md:h-[360px] overflow-hidden">
+              <div className="relative bg-[#14142B] flex items-center justify-center h-[320px] md:h-[360px] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
@@ -718,6 +721,203 @@ function PrototypeSection({ data, num, meta, accent }) {
     </Container>
   );
 }
+
+/* =================== INDUSTRIES (Brand Case Study) =================== */
+function IndustriesSection({ items, accent }) {
+  return (
+    <div className="space-y-28 md:space-y-36">
+      {items.map((industry, i) => (
+        <IndustryBlock
+          key={industry.id}
+          industry={industry}
+          accent={accent}
+          total={items.length}
+          showDivider={i < items.length - 1}
+        />
+      ))}
+    </div>
+  );
+}
+
+function IndustryBlock({ industry, accent, total, showDivider }) {
+  return (
+    <section className="relative">
+      {/* Centered Heading Block */}
+      <div className="max-w-3xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-white/55 mb-5">
+          <span className="block w-6 h-px bg-white/30" />
+          {industry.number} / {String(total).padStart(2, '0')}
+          <span className="block w-6 h-px bg-white/30" />
+        </div>
+        <h2 className="font-display text-5xl md:text-7xl lg:text-[88px] font-bold tracking-tight leading-[0.98]">
+          {industry.heading}
+        </h2>
+        <h3
+          className="font-display text-lg md:text-2xl mt-5 italic tracking-tight"
+          style={{ color: accent }}
+        >
+          {industry.subheading}
+        </h3>
+      </div>
+
+      {/* Body paragraphs */}
+      <div className="max-w-3xl mx-auto px-6 mt-10 space-y-5">
+        {industry.paragraphs?.map((p, i) => (
+          <p
+            key={i}
+            className={`text-white/75 leading-[1.85] ${
+              i === 0
+                ? 'text-[18px] md:text-[20px] font-display'
+                : 'text-[15.5px] md:text-[16px]'
+            }`}
+          >
+            {p}
+          </p>
+        ))}
+      </div>
+
+      {/* Steps (optional) */}
+      {industry.steps && industry.steps.length > 0 && (
+        <div className="max-w-4xl mx-auto px-6 mt-12 grid sm:grid-cols-2 gap-4">
+          {industry.steps.map((step) => (
+            <div key={step.n} className="glass rounded-2xl p-6">
+              <div className="flex items-center gap-3">
+                <span
+                  className="font-display text-[12px] font-semibold w-8 h-8 grid place-items-center rounded-lg"
+                  style={{
+                    background: `${accent}22`,
+                    border: `1px solid ${accent}44`,
+                    color: accent,
+                  }}
+                >
+                  {step.n}
+                </span>
+                <h4 className="font-display text-[17px] font-semibold tracking-tight">
+                  {step.title}
+                </h4>
+              </div>
+              <p className="mt-3 text-[14px] text-white/65 leading-relaxed">
+                {step.desc}
+              </p>
+              {step.tag && (
+                <p
+                  className="mt-3 text-[13px] italic font-display"
+                  style={{ color: accent }}
+                >
+                  {step.tag}
+                </p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Closing paragraphs */}
+      {industry.closing && industry.closing.length > 0 && (
+        <div className="max-w-3xl mx-auto px-6 mt-10 space-y-4">
+          {industry.closing.map((p, i) => (
+            <p
+              key={i}
+              className="text-[15.5px] md:text-[16px] text-white/65 leading-[1.85]"
+            >
+              {p}
+            </p>
+          ))}
+        </div>
+      )}
+
+      {/* Image collage */}
+      {industry.images && industry.images.length > 0 && (
+        <div className="max-w-6xl mx-auto px-6 mt-14">
+          <ImageCollage images={industry.images} accent={accent} />
+        </div>
+      )}
+
+      {/* Divider */}
+      {showDivider && (
+        <div className="max-w-5xl mx-auto px-6 mt-24">
+          <div className="flex items-center gap-5">
+            <span className="block flex-1 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+            <span
+              className="w-2 h-2 rounded-full"
+              style={{ background: accent }}
+            />
+            <span className="block flex-1 h-px bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+function ImageCollage({ images, accent }) {
+  const n = images.length;
+
+  if (n <= 4) {
+    return (
+      <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
+        {images.map((src, i) => (
+          <CollageImage key={i} src={src} index={i} ratio="aspect-[4/5]" accent={accent} />
+        ))}
+      </div>
+    );
+  }
+
+  if (n === 5) {
+    return (
+      <div className="grid md:grid-cols-12 gap-4 md:gap-5">
+        <div className="md:col-span-7">
+          <CollageImage src={images[0]} index={0} ratio="aspect-[4/3]" accent={accent} />
+        </div>
+        <div className="md:col-span-5 grid grid-cols-2 gap-4 md:gap-5">
+          {images.slice(1).map((src, i) => (
+            <CollageImage
+              key={i}
+              src={src}
+              index={i + 1}
+              ratio="aspect-square"
+              accent={accent}
+            />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      {images.map((src, i) => {
+        const span = i === 0 && n >= 7 ? 'sm:col-span-2 lg:col-span-2 lg:row-span-2' : '';
+        const r = i === 0 && n >= 7 ? 'aspect-[16/10]' : 'aspect-[4/5]';
+        return (
+          <div key={i} className={span}>
+            <CollageImage src={src} index={i} ratio={r} accent={accent} />
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function CollageImage({ src, index, ratio = 'aspect-[4/5]', accent }) {
+  return (
+    <div
+      className={`relative ${ratio} rounded-[20px] overflow-hidden group`}
+      style={{
+        background: `linear-gradient(135deg, ${accent}10 0%, #14142B 100%)`,
+      }}
+    >
+      <img
+        src={src}
+        alt={`Brand visual ${index + 1}`}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+      />
+      <div className="absolute inset-0 ring-1 ring-inset ring-white/5 rounded-[20px] pointer-events-none" />
+    </div>
+  );
+}
+
 
 function DesignGoalsSection({ items, num, meta, accent }) {
   return (
