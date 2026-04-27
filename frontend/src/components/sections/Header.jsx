@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
-import { navLinks, profile } from '../../mock';
+import { Menu, X, Sparkles, FileDown } from 'lucide-react';
+import { navLinks, profile, RESUME_URL } from '../../mock';
 
 export default function Header({ scrolled }) {
   const [open, setOpen] = useState(false);
@@ -39,6 +39,14 @@ export default function Header({ scrolled }) {
           <span className="flex items-center gap-2 text-[12.5px] text-white/70 px-3 py-1.5 rounded-full glass">
             <span className="pulse-dot" /> Available for Q3
           </span>
+          <a
+            href={RESUME_URL}
+            download
+            className="btn-ghost text-[13.5px] !py-2 !px-4"
+            title="Download Resume"
+          >
+            <FileDown size={15} /> Resume
+          </a>
           <a href="#contact" className="btn-primary text-[14px] !py-2.5 !px-5">
             Hire me
           </a>
@@ -65,6 +73,14 @@ export default function Header({ scrolled }) {
               {l.label}
             </a>
           ))}
+          <a
+            href={RESUME_URL}
+            download
+            onClick={() => setOpen(false)}
+            className="btn-ghost justify-center"
+          >
+            <FileDown size={15} /> Download Resume
+          </a>
           <a href="#contact" onClick={() => setOpen(false)} className="btn-primary justify-center mt-1">
             Hire me
           </a>

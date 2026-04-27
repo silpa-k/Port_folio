@@ -1,4 +1,5 @@
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import useReveal from '../../hooks/useReveal';
 import { projects } from '../../mock';
 
@@ -78,13 +79,12 @@ function ProjectCard({ project }) {
             </span>
           ))}
         </div>
-        <button
-          type="button"
-          onClick={() => alert(`Case study for "${project.title}" coming soon ✨`)}
+        <Link
+          to={`/case-study/${project.id}`}
           className="mt-5 inline-flex items-center gap-1.5 text-[14px] font-medium text-white/85 hover:text-[#00F5D4] transition-colors link-underline"
         >
           View Case Study <ArrowUpRight size={15} />
-        </button>
+        </Link>
       </div>
     </article>
   );

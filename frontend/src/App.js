@@ -1,6 +1,7 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Portfolio from './components/Portfolio';
+import CaseStudy from './components/CaseStudy';
 import { Toaster } from './components/ui/sonner';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Portfolio />} />
+          <Route path="/case-study/:id" element={<CaseStudy />} />
         </Routes>
       </BrowserRouter>
       <Toaster

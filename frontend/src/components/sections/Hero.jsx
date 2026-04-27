@@ -1,6 +1,6 @@
-import { ArrowRight, Mail, Sparkles, Star } from 'lucide-react';
+import { ArrowRight, Mail, Sparkles, Star, FileDown } from 'lucide-react';
 import useReveal from '../../hooks/useReveal';
-import { profile, heroStats, marqueeTools as tools } from '../../mock';
+import { profile, heroStats, marqueeTools as tools, RESUME_URL } from '../../mock';
 
 export default function Hero() {
   const [r1, v1] = useReveal();
@@ -54,6 +54,9 @@ export default function Hero() {
               </a>
               <a href="#contact" className="btn-ghost">
                 <Mail size={16} /> Contact me
+              </a>
+              <a href={RESUME_URL} download className="btn-ghost">
+                <FileDown size={16} /> Resume
               </a>
             </div>
 

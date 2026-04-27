@@ -37,11 +37,13 @@ export default function Footer() {
             <div className="mt-4 flex flex-wrap gap-2.5">
               {socials.map((s) => {
                 const Icon = s.icon;
+                const isExternal = s.id !== 'em' && !s.download;
                 return (
                   <a
                     key={s.id}
                     href={s.href}
-                    target={s.id === 'em' ? undefined : '_blank'}
+                    {...(s.download ? { download: true } : {})}
+                    target={isExternal ? '_blank' : undefined}
                     rel="noreferrer"
                     className="flex items-center gap-2 px-3.5 py-2 rounded-full glass text-[13px] text-white/80 hover:text-[#00F5D4] hover:border-[#00F5D4]/30 transition-all"
                   >

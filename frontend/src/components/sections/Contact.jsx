@@ -20,15 +20,27 @@ export default function Contact() {
       return;
     }
     setLoading(true);
-    // Mock submit — stash in localStorage so it persists across reloads.
+
+    // Build mailto link — opens user's email client pre-filled and addressed to Silpa
+    const subject = encodeURIComponent(`New project inquiry from ${form.name}`);
+    const body = encodeURIComponent(
+      `Hey Silpa,\n\n${form.message}\n\n—\nFrom: ${form.name}\nEmail: ${form.email}`
+    );
+    const mailto = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+
+    // Stash a local copy too, so nothing is lost if mail client fails.
+    const existing = JSON.parse(localStorage.getItem('silpa_messages') || '[]');
+    existing.push({ ...form, ts: new Date().toISOString() });
+    localStorage.setItem('silpa_messages', JSON.stringify(existing));
+
+    // Trigger the email client
+    window.location.href = mailto;
+
     setTimeout(() => {
-      const existing = JSON.parse(localStorage.getItem('silpa_messages') || '[]');
-      existing.push({ ...form, ts: new Date().toISOString() });
-      localStorage.setItem('silpa_messages', JSON.stringify(existing));
-      toast.success(`Thanks ${form.name.split(' ')[0]}! I'll be in touch soon ✨`);
+      toast.success(`Thanks ${form.name.split(' ')[0]}! Your email client should be opening ✨`);
       setForm({ name: '', email: '', message: '' });
       setLoading(false);
-    }, 700);
+    }, 600);
   };
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
@@ -68,11 +80,8 @@ export default function Contact() {
                 <ArrowUpRight size={18} className="text-white/40 group-hover:text-[#00F5D4] group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
               </a>
 
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-[#6C5CE7]/40 hover:bg-white/[0.05] transition-all group"
+              <div
+                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/[0.03] border border-white/5"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl glass-strong grid place-items-center text-[#A78BFA]">
@@ -84,18 +93,21 @@ export default function Contact() {
                   </div>
                 </div>
                 <span className="text-[12px] text-white/45">Working globally</span>
-              </a>
+              </div>
 
               <div className="flex items-center gap-3 pt-2">
                 {socials.map((s) => {
                   const Icon = s.icon;
+                  const isExternal = s.id !== 'em' && !s.download;
                   return (
                     <a
                       key={s.id}
                       href={s.href}
-                      target={s.id === 'em' ? undefined : '_blank'}
+                      {...(s.download ? { download: true } : {})}
+                      target={isExternal ? '_blank' : undefined}
                       rel="noreferrer"
                       aria-label={s.label}
+                      title={s.label}
                       className="w-11 h-11 rounded-full glass grid place-items-center text-white/75 hover:text-[#00F5D4] hover:border-[#00F5D4]/40 transition-all"
                     >
                       <Icon size={16} />
